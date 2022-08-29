@@ -10,4 +10,4 @@ class Logger extends EventEmitter {
     }
 }
 
-module.export = logger;
+module.exports = Logger;

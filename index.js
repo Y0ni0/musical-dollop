@@ -1,17 +1,28 @@
-// const Person = require('./person');
+const http = require('http');
+const path = require('path');
+const fs = require('fs');
 
-// const person1 = new Person('Yabsira kas', 21);
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, content) => {
+            if (err) throw err;
+            res.writeHead(200, { 'Content-type': 'text/html' });
+            res.end(content);
+        })
+    }
 
-// person1.greetings();
+    if (req.url === '/about') {
+        fs.readFile(path.join(__dirname, 'public', 'about.html'), (err, content) => {
+            if (err) throw err;
+            res.writeHead(200, { 'Content-type': 'text/html' });
+            res.end(content);
+        })
+    }
+});
 
-const Logger = require('./logger');
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const logger = new Logger();
 
-logger.on('message', data => console.log('Called Listener', data));
-
-logger.log('Hello World');
-logger.log('Hi');
-logger.log('Hello');
 
 

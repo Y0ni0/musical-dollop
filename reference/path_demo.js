@@ -17,3 +17,9 @@ console.log(path.parse(__filename).base);
 
 //concatenate paths
 console.log(path.join(__dirname, 'test', 'hello.html'));
+
+// const Person = require('./person');
+
+// const person1 = new Person('Yabsira kas', 21);
+
+// person1.greetings();
